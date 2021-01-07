@@ -1,0 +1,2 @@
+module ALGO_JAVA {
+}
