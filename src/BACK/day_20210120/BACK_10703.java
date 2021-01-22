@@ -27,9 +27,9 @@ public class BACK_10703 {
 		
 		
 		
-		int y=0; //운석의 밑바닥
-		int x=0;
-		for(int i=R-1; i>=0; i--)
+		int y=0; //
+		int x=0;//운석의 밑바닥
+		for(int i=R-1; i>=0; i--)//운석의 맨 밑 위치을 찾는 루프
 		{
 			if(MET[i].indexOf("X")!=-1) {
 				y=MET[i].indexOf("X");
@@ -37,41 +37,42 @@ public class BACK_10703 {
 				break;
 			}
 		}
-		int min=10000;
+		int min=10000;//최솟값
 		//int count=0;
+		
 		int tmp=0;
 		for(int i=0;i<S;i++) {
 	         int count = 0;
 	         int state = 0;
-	         for(int j=0;j<R;j++) {
-	            if(MET[j].charAt(i) == 'X') {
+	         for(int j=0;j<R;j++) {//위에서부터 밑으로 열을 탐색
+	            if(MET[j].charAt(i) == 'X') {//운석을 만나면 state=1
 	               state = 1;
 	               count = 0;
 	            }
-	            else if(MET[j].charAt(i) == '#') {
+	            else if(MET[j].charAt(i) == '#') {//땅을 만나면 break후 전에 나왔던 공기층을 검사
 	               break;
 	            }
-	            if(state == 1) {
-	               if(MET[j].charAt(i) == '.') {
+	            if(state == 1) {//전 탐색에서 운석을 만났고 
+	               if(MET[j].charAt(i) == '.') {//현재가 공기면 카운트
 	                  count++;
 	               }
 	            }
 	         }
-	         if(count != 0) {
-	            if(min > count) {
+	         if(count >0) {//공기층은 무조건 1개 이상
+	            if(min > count) {//지금 현재 공기층이 min값보다 작으면 min에 대입
 	               min = count;
 	            }
 	         }
 	      }
-		for(int i=x; i>=0; i--) {
+		int count=min;
+		for(int i=x; i>=0; i--) {//아까 찾은 운석의 바닥부터 시작
 			for(int j=0; j<S; j++) {
-				int count1=min;
 				
-				if(MET[i].charAt(j)=='X') {//
-					int tp=i;
-					if(i+count1<R) {
-						MET[i+count1].setCharAt(j, 'X');
-						MET[tp].setCharAt(j, '.');
+				
+				if(MET[i].charAt(j)=='X') {//운석의 밑 부분부터
+					if(i+count<R) {//배열 넘어가면 안돼
+						MET[i+count].setCharAt(j, 'X');//그 X의 위치에서 최소거리를 더한 위치에 X 대입
+						MET[i].setCharAt(j, '.');//원래 X를 찾았던 위치에 . 대입
 					}
 					
 					
@@ -80,13 +81,14 @@ public class BACK_10703 {
 		}
 
 		
-		StringBuffer sb=new StringBuffer();
-		for(int i=0; i<R; i++)
+		//StringBuffer sb=new StringBuffer();
+		for(int i=0; i<R; i++)//버퍼에 한줄씩 붙임
 		{
-			sb.append(MET[i]).append("\n");
+			//sb.append(MET[i]).append("\n");
+			System.out.println(MET[i]);
 		}
 		
-		System.out.println(sb);
+		//System.out.println(sb);
 	
 	}
 
