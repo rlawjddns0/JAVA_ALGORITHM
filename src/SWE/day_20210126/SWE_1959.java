@@ -24,35 +24,53 @@ public class SWE_1959 {
 			if(N<M) {
 				min=N;
 				max=M;
-				arr1=new int[M];
+				arr1=new int[N];
 				arr2=new int[M];
+				StringTokenizer st1=new StringTokenizer(br.readLine()," ");
+				
+				for(int i=0; i<arr1.length; i++) {
+					arr1[i]=Integer.parseInt(st1.nextToken());
+				}
+				
+				StringTokenizer st2=new StringTokenizer(br.readLine()," ");
+				
+				for(int i=0; i<arr2.length; i++) {
+					arr2[i]=Integer.parseInt(st2.nextToken());
+				}
 			}
 			else {
 				min=M;
 				max=N;
-				arr1=new int[N];
+				arr1=new int[M];
 				arr2=new int[N];
-			}
-			
-			StringTokenizer st1=new StringTokenizer(br.readLine()," ");
-			
-			for(int i=0; i<arr1.length; i++) {
-				arr1[i]=Integer.parseInt(st1.nextToken());
-			}
-			
-			StringTokenizer st2=new StringTokenizer(br.readLine()," ");
-			
-			for(int i=0; i<arr1.length; i++) {
-				arr2[i]=Integer.parseInt(st2.nextToken());
-			}
-			
-			int sum=0;
-			for(int i=0; i<max-min; i++) {
-				for(int j=i; j<min+i; j++) {
-					//sum+=
+				StringTokenizer st1=new StringTokenizer(br.readLine()," ");
+				
+				for(int i=0; i<arr2.length; i++) {
+					arr2[i]=Integer.parseInt(st1.nextToken());
+				}
+				
+				StringTokenizer st2=new StringTokenizer(br.readLine()," ");
+				
+				for(int i=0; i<arr1.length; i++) {
+					arr1[i]=Integer.parseInt(st2.nextToken());
 				}
 			}
 			
+			
+			int MAX=0;
+
+				for(int i=0; i<max-min+1; i++) {
+					int sum=0;
+					for(int j=0,k=i; j<arr1.length; j++,k++) {
+						sum+=arr1[j]*arr2[k];
+					}
+					if(MAX<sum) {
+						MAX=sum;
+					}
+					
+				}
+			
+			System.out.println("#"+(t+1)+" "+MAX);
 			
 			
 			
