@@ -6,6 +6,13 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
+/** 
+ * 스도쿠 검증 풀이중 
+ * 
+ * 
+ * 
+ * */
+
 
 public class SWE_1974 {
 

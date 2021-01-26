@@ -12,7 +12,7 @@ public class BACK_16922 {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
 		int n=sc.nextInt();
-		//solution(n);
+		
 		
 		
 	}
