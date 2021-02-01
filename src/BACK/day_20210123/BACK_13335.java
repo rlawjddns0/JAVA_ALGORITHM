@@ -31,9 +31,9 @@ public class BACK_13335 {
 		for(int i=0; i<n; i++) {
 			while(true) {
 					if(q.isEmpty()) {//q가 비어 있으면 q에 트럭 올리기
-						q.offer(arr[i]);
-						sumOfq+=arr[i];
-						time++;
+						q.offer(arr[i]);//q에 트럭 올리기
+						sumOfq+=arr[i];//하중 계산
+						time++;//올라갔으니께 time++
 						break;
 					}
 					else if(q.size()==bridge_length) {//다리 위에 트럭이 다 올라가 있음
