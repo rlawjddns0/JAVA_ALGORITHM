@@ -12,7 +12,7 @@ public class SWE_4615 extends java.lang.Object{
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		// TODO Auto-generated method stub
 		int[] dx = { 0, 1, 1, 1, 0, -1, -1, -1 };
-		int[] dy = { 1, 1, 0, -1, -1, -1, 0, 1 };
+		int[] dy = { -1, -1, 0, 1, 1, 1, 0, -1 };
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int testCase = Integer.parseInt(br.readLine());
@@ -39,8 +39,9 @@ public class SWE_4615 extends java.lang.Object{
 				
 				int nx = (x - 1);
 				int ny = (y - 1);
+				map[nx][ny]=color;
+
 				
-				boolean flag = false;
 				for (int k = 0; k < 8; k++) {
 					
 					int nx1 = nx;
@@ -50,31 +51,36 @@ public class SWE_4615 extends java.lang.Object{
 						nx1 += dx[k];// 한칸 더
 						ny1 += dy[k];// 한칸 더
 
-						if (nx1 < 0 || nx1 >= N || ny1 < 0 || ny1 >= N) {
+						if (nx1 < 0 || nx1 >= N || ny1 < 0 || ny1 >= N || map[nx1][ny1]==0) {//경계밖이거나 빈 공간이 나오면
 
 							break;
 						}
 
-						if (map[nx1][ny1] != color) {// map을 벗어나지 않고 지금 현재 내가 놓은 돌과 다르거나 공백이면
+						if (map[nx1][ny1] != color) {// map을 벗어나지 않고 지금 현재 내가 놓은 돌과 다른경우
 							count++;
 						} else if (map[nx1][ny1] == color) {//내가 둔 돌과 같은 색이 있으면
-							flag = true;//돌을 놓는게 가능
-							int tx = nx1;
-							int ty = ny1;
+							
 							for (int g = 0; g < count; g++) {// 왔던만큼 다시 거꾸로
-								tx -= dx[k];
-								ty -= dy[k];
-								if (map[tx][ty] == 0)// 0 건너 뜀
+								nx1 -= dx[k];
+								ny1 -= dy[k];
+								if (map[nx1][ny1] == 0)// 0 건너 뜀
 									continue;
-								map[tx][ty] = color;
+								map[nx1][ny1] = color;
 							}
 							break;
 						}
 					}
 
 				}
-				if (flag == false)
-					map[x - 1][y - 1] = 0;
+//				for(int s=0; s<N; s++) {
+//	                  for(int q=0; q<N; q++) {
+//	                     System.out.print(map[s][q]+" ");
+//	                  }
+//	                  System.out.println();
+//	               }
+//	               System.out.println();
+//	               System.out.println();
+
 			}
 			int Bcount = 0;
 			int Wcount = 0;
@@ -82,7 +88,7 @@ public class SWE_4615 extends java.lang.Object{
 				for (int j = 0; j < N; j++) {
 					if (map[o][j] == 1)
 						Bcount++;
-					else
+					else if(map[o][j] == 2)
 						Wcount++;
 				}
 			}
