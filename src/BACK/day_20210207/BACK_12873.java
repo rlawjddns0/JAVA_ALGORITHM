@@ -29,15 +29,18 @@ public class BACK_12873 {
 				if (n == 0) {
 					n = q.size();
 				}
-				for (int i = 0; i < n - 1; i++) {
-					q.offer(q.poll());
+				for (int i = 0; i < n-1 ; i++) {
+					int temp=q.poll();
+					q.offer(temp);
+					
 				}
 				q.poll();
 
 				t++;
 			}
+			System.out.println(q.poll());
 		}
-		System.out.println(q.poll());
+		
 	}
 
 }

@@ -34,7 +34,7 @@ public class SWE_5215 {
 		
 		
 	}
-	private static void powerSet(int idx, boolean[] sel) {
+	private static void powerSet(int idx, boolean[] sel) {//불리안 배열을 해서 선택 됐는지 안됐는지 확인 가능하다
 		// TODO Auto-generated method stub
 		if(idx==sel.length) {
 			int totalcal=0;
