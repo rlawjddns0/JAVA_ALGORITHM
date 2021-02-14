@@ -7,7 +7,7 @@ import java.util.StringTokenizer;
 
 public class BACK_14888 {
 	static int N;
-	static int[] op;
+	static int[] operator;
 	static int[] num;
 	static int Max=Integer.MIN_VALUE,Min=Integer.MAX_VALUE;
 	//static int sum;
@@ -22,13 +22,13 @@ public class BACK_14888 {
 			num[i]=Integer.parseInt(st.nextToken());
 		}
 		
-		op=new int[4];
+		operator=new int[4];
 		st=new StringTokenizer(br.readLine()," ");
 		for(int i=0; i<4; i++) {
-			op[i]=Integer.parseInt(st.nextToken());
+			operator[i]=Integer.parseInt(st.nextToken());
 		}
 		int sum=num[0];
-		result(op[0],op[1],op[2],op[3],1, sum);//int plus, int minus int surplus int divide int k, int sum
+		result(operator[0],operator[1],operator[2],operator[3],1, sum);//더하기 빼기 곱하기 나누기 합
 		System.out.println(Max);
 		System.out.println(Min);
 	}
@@ -45,25 +45,30 @@ public class BACK_14888 {
 		
 		if(P>0) {
 			int temp=sum;
-			sum+=num[k];
-			result(P-1,M,S,D,k+1,sum);
-			sum=temp;
+			sum+=num[k];//계산 할 차례의 숫자
+			result(P-1,M,S,D,k+1,sum);//sum을 같이 끌고 간다.
+			sum=temp;//원래 돌아왔을때 다시 이용하기 위해서
+			/*
+			 * 생각해보니까
+			 * 그냥
+			 * result(P-1,M,S,D,k+1,sum+num[k])로 하면 될듯 
+			 */
 		}
 		if(M>0) {
 			int temp=sum;
-			sum-=num[k];
+			sum-=num[k];//빼기
 			result(P,M-1,S,D,k+1,sum);
 			sum=temp;
 		}
 		if(S>0) {
 			int temp=sum;
-			sum*=num[k];
+			sum*=num[k];//곱하기
 			result(P,M,S-1,D,k+1,sum);
 			sum=temp;
 		}
 		if(D>0) {
 			int temp=sum;
-			sum/=num[k];
+			sum/=num[k];//나누기
 			result(P,M,S,D-1,k+1,sum);
 			sum=temp;
 		}
