@@ -27,7 +27,7 @@ public class BAEK_15686 {
 				int tp = Integer.parseInt(st.nextToken());
 				map[i][j] = tp;
 				if (tp == 2) {
-					count++;
+					count++;//치킨집 갯수 구하기
 				}
 			}
 		}
@@ -37,7 +37,7 @@ public class BAEK_15686 {
 		for (int i = 1; i < N + 1; i++) {
 			for (int j = 1; j < N + 1; j++) {
 				if (map[i][j] == 2) {
-					ch[tp++] = new chicken(i, j);
+					ch[tp++] = new chicken(i, j);//치킨집 좌표 구하기
 				}
 			}
 		}
@@ -53,7 +53,6 @@ public class BAEK_15686 {
 		if (k == M) {
 			int su = 0;
 			
-
 			for (int j = 1; j < N+1; j++) {
 				for (int u = 1; u < N+1; u++) {
 					if (map[j][u] == 1) {
@@ -68,10 +67,7 @@ public class BAEK_15686 {
 						}
 						su+=min;
 					}
-					
-
 				}
-
 				// System.out.println(min);
 			}
 			//System.out.println(su);

@@ -18,7 +18,7 @@ public class BAEK_2839 {
 		
 		
 		while(five>=0) {
-			
+			 
 			if((N%3)==0) {
 				three=N/3;
 				N%=3;
