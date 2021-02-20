@@ -38,18 +38,13 @@ public class BAEK_1987 {
 
 		ans = Math.max(ans, cnt);
 		
-		System.out.println(map[y][x]);
 		
 		for (int i = 0; i < 4; i++) {
 			int nx = x + dx[i];
 			int ny = y + dy[i];
-			//System.out.println(nx);
-			//System.out.println(ny);
 			if (nx >= 0 && nx < C && ny >= 0 && ny < R) {
-				//System.out.println("dsfasf");
 
 				if(check[map[ny][nx]-'A']==false) {
-					//System.out.println("dsfasf");
 					check[map[ny][nx]-'A']=true;
 					solve(nx,ny,cnt+1);
 					check[map[ny][nx]-'A']=false;
