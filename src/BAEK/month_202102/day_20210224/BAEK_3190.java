@@ -104,7 +104,7 @@ class change{
 	int x;
 	int y;
 	char d;
-	int hx;
+	int hx; 
 	int hy;
 	change(int hx, int hy,int x, int y, char d){
 		this.d=d;
