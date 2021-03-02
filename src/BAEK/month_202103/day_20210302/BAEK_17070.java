@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BAEK_15684 {
+public class BAEK_17070 {
 	static int N;
 	static int[][] map;
 	static int[] dx= {1,1,0};//우, 우하, 하
