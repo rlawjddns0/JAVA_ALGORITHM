@@ -14,7 +14,6 @@ public class BAEK_20056 {
 	static ArrayList<fireBall> fb;
 	static int[] dx= {0,1,1,1,0,-1,-1,-1};
 	static int[] dy= {-1,-1,0,1,1,1,0,-1};
-	static int[][] map;
 	static int[][] count;
 	public static void main(String[] args) throws IOException {
 		// TODO Auto-generated method stub
@@ -24,14 +23,12 @@ public class BAEK_20056 {
 		N=Integer.parseInt(st.nextToken());
 		M=Integer.parseInt(st.nextToken());
 		K=Integer.parseInt(st.nextToken());
-		map=new int[N][N];
 		count=new int[N][N];
 		fb=new ArrayList<fireBall>();
 		for(int i=0; i<M; i++) {
 			st=new StringTokenizer(br.readLine()," ");
 			fb.add(new fireBall(Integer.parseInt(st.nextToken())-1,Integer.parseInt(st.nextToken())-1,Integer.parseInt(st.nextToken()),
 								Integer.parseInt(st.nextToken()),Integer.parseInt(st.nextToken())));
-			map[fb.get(i).r][fb.get(i).c]=fb.get(i).m;
 			
 		}
 		while(K!=0) {
@@ -42,8 +39,7 @@ public class BAEK_20056 {
 				int m=fb.get(i).m;//질량
 				int s=fb.get(i).s;//속력
 				int d=fb.get(i).d;//방향
-				
-				map[r][c]=0;
+				;
 				
 				int dis=s%N;//모듈라 연산으로 넘어가는 범위 구하기
 				int nr=r+dy[d]*dis;
@@ -53,7 +49,6 @@ public class BAEK_20056 {
 				if(nc>=N)nc-=N;
 				if(nc<0)nc+=N;
 			
-				map[nr][nc]+=m;
 				count[nr][nc]++;//이동하고 몇개 있는지 카운트
 				fb.get(i).r=nr;
 				fb.get(i).c=nc;
@@ -100,7 +95,6 @@ public class BAEK_20056 {
 							fb.add(new fireBall(i,j,divideM,divideS,d));
 							tmp++;
 						}
-						//count[i][j]=4;
 					}
 				}
 			}
@@ -114,19 +108,19 @@ public class BAEK_20056 {
 		System.out.println(ans);
 		
 	}
-	public static void print() {
-		System.out.println("fire ball");
-		for(int i=0; i<N; i++) {
-			System.out.println(Arrays.toString(map[i]));
-		}
-		System.out.println();
-		
-		System.out.println("count");
-		for(int i=0; i<N; i++) {
-			System.out.println(Arrays.toString(count[i]));
-		}
-		System.out.println();
-	}
+//	public static void print() {
+//		System.out.println("fire ball");
+//		for(int i=0; i<N; i++) {
+//			System.out.println(Arrays.toString(map[i]));
+//		}
+//		System.out.println();
+//		
+//		System.out.println("count");
+//		for(int i=0; i<N; i++) {
+//			System.out.println(Arrays.toString(count[i]));
+//		}
+//		System.out.println();
+//	}
 	public static void init() {
 		for(int i=0; i<N; i++) {
 			for(int j=0; j<N; j++) {
