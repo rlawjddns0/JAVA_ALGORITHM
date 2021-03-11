@@ -49,34 +49,34 @@ public class BAEK_20056 {
 				if(nc>=N)nc-=N;
 				if(nc<0)nc+=N;
 			
-				count[nr][nc]++;//이동하고 몇개 있는지 카운트
-				fb.get(i).r=nr;
-				fb.get(i).c=nc;
+				count[nr][nc]++;//파이어 볼이 이동한 후 그 자리에 파이어볼 카운트 해주기
+				fb.get(i).r=nr;//이동 후 위치 갱신
+				fb.get(i).c=nc;//이동 후 위치 갱신
 				
 			}
 			for(int i=0; i<N; i++) {
 				for(int j=0; j<N; j++) {
 					if(count[i][j]>1) {//2개 이상 모여있다.
-						int sumM=0;
-						int sumS=0;
-						int cnt=0;
-						int odd=0,even=0;
-						for(int k=0; k<fb.size(); k++) {
+						int sumM=0;//무게 합
+						int sumS=0;//속력 합
+						int cnt=0;//지금 모여있는 파이어볼 카운트
+						int odd=0,even=0;//나중에 방향을 위해서 
+						for(int k=0; k<fb.size(); k++) {//리스트 탐색
 							if(fb.get(k).r==i && fb.get(k).c==j) {//모여있는거 찾기
 								sumM+=fb.get(k).m;//질량 합
 								sumS+=fb.get(k).s;//속력 합
 								cnt++;//합쳐진 파이어볼의 개수
 								if(fb.get(k).d%2==0) {
-									even++;
+									even++;//짝수
 								}else {
-									odd++;
+									odd++;//홀수
 								}
-								fb.remove(k);
+								fb.remove(k);//합친거는 삭제
 								k--;
 							}
 						}
 
-						if(sumM<5) {//합이 5 이하이면 걍 건너뜀
+						if(sumM<5) {//합이 5 이하이면 그냥 업는거 그래서 count=0;
 							count[i][j]=0;
 							
 							continue;
@@ -92,7 +92,7 @@ public class BAEK_20056 {
 						}
 						int tmp=0;
 						for(int d=start; d<8; d+=2) {
-							fb.add(new fireBall(i,j,divideM,divideS,d));
+							fb.add(new fireBall(i,j,divideM,divideS,d));//현재 위치 , 나눠진 무게 , 나눠진 속력, 방향 저장
 							tmp++;
 						}
 					}
@@ -102,7 +102,7 @@ public class BAEK_20056 {
 			
 		}
 		int ans=0;
-		for(int i=0; i<fb.size(); i++) {
+		for(int i=0; i<fb.size(); i++) {//명령 끝나면 리스트에 남아 있는 
 			ans+=fb.get(i).m;
 		}
 		System.out.println(ans);

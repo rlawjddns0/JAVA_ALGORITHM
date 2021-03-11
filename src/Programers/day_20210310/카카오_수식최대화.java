@@ -16,11 +16,11 @@ public class 카카오_수식최대화 {
 		System.out.println(ans);
 	}
 
-	static int[] op = new int[3];// 0:+ , 1:*, 2:-
-	static char[] ch = { '+', '*', '-' };
-	static ArrayList<String> st;
-	static int op_cnt;
-	static ArrayList<String> tmp_st;
+	static int[] op = new int[3];// 0:+ , 1:*, 2:-//연산자가 있는지 없는지 index로 확인 할려고
+	static char[] ch = { '+', '*', '-' };//연산자 
+	static ArrayList<String> st;//입력으로 들어온 문자열 연산자랑 숫자로 나누려고
+	static int op_cnt;//연산자 갯수 확인용
+	static ArrayList<String> tmp_st;//임시 리스트
 	public static long solution(String expression) {
 		long answer = 0;
 		st = new ArrayList<String>();//숫자와 연산자 담을 리스트
@@ -110,8 +110,8 @@ public class 카카오_수식최대화 {
 		}
 
 		for (int i = 0; i < 3; i++) {
-			if (op[i] == 0) {
-				visit[i] = true;
+			if (op[i] == 0) {//연산자가 없는거는
+				visit[i] = true;//방문 배열 트루로 해버리고 갈 필요가 없음
 				continue;
 			} else {
 				if (!visit[i]) {
