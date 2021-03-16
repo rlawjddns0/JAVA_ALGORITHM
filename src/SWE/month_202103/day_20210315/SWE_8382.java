@@ -14,6 +14,7 @@ public class SWE_8382 {
 		Scanner sc=new Scanner(System.in);
 		int TC=sc.nextInt();
 		
+		
 		for(int t=1; t<=TC; t++) {
 			startx=sc.nextInt()+100;
 			starty=sc.nextInt()+100;
