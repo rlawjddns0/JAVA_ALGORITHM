@@ -76,45 +76,45 @@ public class BAEK_16235 {
 
 	private static void fall() {
 		
-		ArrayList<tree> baby=new ArrayList<tree>();
+		ArrayList<tree> baby=new ArrayList<tree>();//아기나무
 		for (tree tmp : t) {
 			if (tmp.age % 5 == 0) {
 				for (int d = 0; d < 8; d++) {
 					int nx = tmp.x + dy[d];
 					int ny = tmp.y + dx[d];
-					if (nx >= 1 && nx < N + 1 && ny >= 1 && ny < N + 1) {
-						baby.add(new tree(nx, ny, 1, true));
+					if (nx >= 1 && nx < N + 1 && ny >= 1 && ny < N + 1) {//사방에 아기나무 심어주기
+						baby.add(new tree(nx, ny, 1, true));//일단 아기나무 좌표를 넣어줌
 					}
 
 				}
 			}
 		}
-		t.addAll(0, baby);
+		t.addAll(0, baby);//앞에다가 어린 나무를 붙여주면 어린 나무부터 양분을 먹게된다
 
 	}
 
 	private static void summer() {
-		while(!dead.isEmpty()) {
+		while(!dead.isEmpty()) {//죽은 나무 다 양분으로
 			tree t=dead.poll();
 			map[t.x][t.y]+=t.age/2;
 		}
 	}
 
-	private static void spring() {
+	private static void spring() {//처음 입력은 한칸에 나무 하나
 
-		Iterator<tree> it=t.iterator();
+		Iterator<tree> it=t.iterator();//이터레이터로하면 속도가 느리다??
 		while(it.hasNext()) {
-			tree tmp=it.next();
+			tree tmp=it.next();//다음꺼 하나 받아주고
 			int r=tmp.x;
 			int c=tmp.y;
 			int age=tmp.age;
 			
-			if(map[r][c]<age) {
-				dead.offer(tmp);
-				it.remove();
-			}else {
-				map[r][c]-=age;
-				tmp.age++;
+			if(map[r][c]<age) {//양분이 나이만큼 없으면
+				dead.offer(tmp);//죽은나무 링크드 리스트에 넣어주고
+				it.remove();//중간에 삽입 삭제는 링크드가 빠름
+			}else {//있으면
+				map[r][c]-=age;//나이만큼 양분 먹고
+				tmp.age++;//나이 한살 추가
 			}
 		}
 
@@ -130,7 +130,7 @@ public class BAEK_16235 {
 
 }
 
-class tree implements Comparable<tree> {
+class tree {
 	int x, y, age;
 	boolean alive;
 
@@ -142,13 +142,7 @@ class tree implements Comparable<tree> {
 
 	}
 
-	@Override
-	public int compareTo(tree o) {
-		if (this.x == o.x && this.y == o.y) {
-			return 1;
-		}
-		return 0;
-	}
+	
 
 	@Override
 	public String toString() {
