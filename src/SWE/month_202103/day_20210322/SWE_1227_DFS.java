@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class SWE_1227 {
+public class SWE_1227_DFS {
 	static int[][] map;
 	static boolean[][] visit;
 	static int[] dx= {1,0,-1,0};
@@ -47,7 +47,7 @@ public class SWE_1227 {
 		}
 	}
 	private static void dfs(int y, int x) {
-
+		if(ans==1)return;
 		if(map[y][x]==3) {
 			
 			
