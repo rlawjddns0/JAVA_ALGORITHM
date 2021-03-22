@@ -65,10 +65,6 @@ public class BAEK_1753 {
 
 	}
 
-	private static void dijkstra(int start, int end, ArrayList<vertex>[] vertex) {
-
-	}
-
 }
 
 class vertex {

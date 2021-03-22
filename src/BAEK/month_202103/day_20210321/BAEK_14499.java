@@ -20,6 +20,7 @@ public class BAEK_14499 {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		Scanner sc=new Scanner(System.in);
+		
 		N=sc.nextInt();
 		M=sc.nextInt();
 		x=sc.nextInt();
