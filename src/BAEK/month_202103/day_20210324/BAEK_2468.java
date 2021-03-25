@@ -7,7 +7,10 @@ import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-
+/*
+ * 
+ * bfs를 할때에는 항상 큐에 넣을때 방문 체크를 하도록 하자
+ */
 public class BAEK_2468 {
 	static int N;
 	static int[][] map;
