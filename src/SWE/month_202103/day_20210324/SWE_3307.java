@@ -24,18 +24,20 @@ public class SWE_3307 {
     			arr[i]=Integer.parseInt(st.nextToken());
     		}
     		int[] lis=new int[n];
-    		lis[0]=1;
-    		for(int i=1; i<n; i++) {
-    			lis[i]=1;
-    			for(int j=0; j<i; j++) {
-    				if(arr[j]<arr[i] && lis[j]+1>lis[i]) {
-    					lis[i]=lis[j]+1;
-    				}
+    		int size=0;
+    		for (int i = 0; i < n; i++) {
+    			int temp=Arrays.binarySearch(lis,0,size,arr[i]);
+    			temp=Math.abs(temp)-1;//중복값이 없으므로 탐색에 실패하고 음수값이 리턴
+    			lis[temp]=arr[i];
+    			
+    			if(temp==size)//사이즈가 temp와 같단는것은 뒤에 추가
+    			{
+    				size++;
     			}
     		}
     		
     		Arrays.sort(lis);
-    		System.out.println("#"+t+" "+lis[lis.length-1]);
+    		System.out.println("#"+t+" "+size);
     		
     		
     		
