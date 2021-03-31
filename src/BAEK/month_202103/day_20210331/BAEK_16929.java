@@ -31,7 +31,7 @@ public class BAEK_16929 {
 				//aSystem.out.println("Y: "+i+"X: "+j);
 				startx = j;
 				starty = i;
-				dfs(i, j,0);
+				dfs(i, j,1);
 					if(flag == true)
 						break L;
 				
