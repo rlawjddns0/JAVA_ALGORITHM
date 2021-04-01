@@ -29,7 +29,7 @@ public class BAEK_16929 {
 			for (int j = 0; j < M; j++) {
 				visit = new boolean[N][M];
 				//aSystem.out.println("Y: "+i+"X: "+j);
-				startx = j;
+				startx = j;//도착점이 시작점
 				starty = i;
 				dfs(i, j,1);
 					if(flag == true)
