@@ -17,13 +17,15 @@ public class BAEK_17271 {
 		int M=sc.nextInt();//B의 시간
 		
 		
-		for(int i=1; i<M; i++) {
+		for(int i=1; i<M; i++) {//M 이하일때는 무조건 1개
 			dp[i]=1;
 		}
-		dp[M]=2;
+		dp[M]=2;//딱 M초 일때는 2개
 		for(int i=M+1; i<=N; i++) {
-			dp[i]=(dp[i-1]%div)+(dp[i-M]%div);//1시간 동안 지지고 볶았더니 나옴
-			if(dp[i]>div) {
+			if(dp[i-1]>=div)dp[i-1]%=div;
+			if(dp[i-M]>=div)dp[i-M]%=div;
+			dp[i]=dp[i-1]+(dp[i-M]);//1시간 동안 지지고 볶았더니 나옴
+			if(dp[i]>=div) {
 				dp[i]%=div;
 			}
 		}
