@@ -9,14 +9,15 @@ import java.util.StringTokenizer;
 public class BAEK_16432 {
 	static ArrayList<Integer>[] day;
 	static int[] ans;
-	static boolean flag;
+	static boolean[][] visit;
 	static int N;
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		
 		BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
 		N=Integer.parseInt(br.readLine());
 		day=new ArrayList[N];
-		
+		ans=new int[N+1];
+		visit=new boolean[N+1][10];
 		for(int i=0; i<N; i++) {
 			StringTokenizer st=new StringTokenizer(br.readLine()," ");
 			day[i]=new ArrayList<>();
@@ -26,47 +27,35 @@ public class BAEK_16432 {
 			}
 		}
 		
-		flag=false;
-		ans=new int[N];
-		int before=-1;
-		int cnt=0;
-		
-		for(int i=0; i<day[0].size(); i++) {
-			ans[0]=day[0].get(i);
-			dfs(1,1,day[0].get(i));
-			if(flag)break;
-			else {
-				System.out.println("-1");
-				System.exit(0);
-			}
-		}
-		
-		
-		for(int i=0; i<ans.length; i++) {
-			System.out.println(ans[i]);
-		}
+	
+		dfs(0,0,visit);
+		System.out.println("-1");
 		
 		
 	}
-	private static void dfs(int cnt,int next, int num) {
+	private static void dfs(int d,int prev, boolean[][] visit) {
 		
-		
-		if(cnt==N ) {
-			flag=true;
+		if(d==N) {
+			
+			for(int i=0; i<N; i++) {
+				System.out.println(ans[i]);
+			}
+			System.exit(0);
 			return ;
 		}
 		
 		
-		for(int i=0; i<day[next].size(); i++) {
-			if(num!=day[next].get(i)) {
-				ans[cnt]=day[next].get(i);
-				dfs(cnt+1,next+1,day[next].get(i));
-				//if(flag==false)return;
+		for(int i=0; i<day[d].size(); i++) {
+			if(prev!=day[d].get(i) && !visit[d][day[d].get(i)]) {
+				ans[d]=day[d].get(i);
+				visit[d][day[d].get(i)]=true;
+				dfs(d+1,day[d].get(i),visit);
 			}
+			
 		}
 		
-		//flag=false;
-		//return false;
+		
+		
 		
 	}
 
