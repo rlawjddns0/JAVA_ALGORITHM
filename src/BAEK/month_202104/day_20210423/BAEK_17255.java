@@ -1,10 +1,11 @@
 package BAEK.month_202104.day_20210423;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.HashSet;
-
+//import java.io.BufferedReader;
+//import java.io.IOException;
+//import java.io.InputStreamReader;
+//import java.util.HashSet;
+import java.util.*;
+import java.io.*;
 public class BAEK_17255 {
 	static HashSet<String> list ;
 	static String str;
@@ -27,7 +28,7 @@ public class BAEK_17255 {
 
 	}
 	private static void Ldfs(int curL, int curR, String curString, int cnt,int size) {
-		
+		if(curString.length()>max)return;
 		if (curString.length()==max) {
 			list.add(curString);
 			return;
@@ -41,7 +42,7 @@ public class BAEK_17255 {
 		
 	}
 	private static void Rdfs(int curL, int curR, String curString, int cnt,int size) {
-		
+		if(curString.length()>max)return;
 		if (curString.length()==max) {
 			list.add(curString);
 			return;
@@ -53,6 +54,8 @@ public class BAEK_17255 {
 			Rdfs(curL, curR + 1, curString,cnt + 1,curString.length());
 			Ldfs(curL, curR + 1, curString,cnt + 1,curString.length());
 		}
+		
+
 		
 	}
 
