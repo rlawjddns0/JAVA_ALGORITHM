@@ -32,7 +32,21 @@ public class BAEK_2263 {
 		for(int i=1; i<=n; i++) {
 			arr[inorder[i]]=i;
 		}
+		getPreorder(1,n,1,n);
 		
+		
+	}
+	private static void getPreorder(int inS, int inE, int poS, int poE) {
+		if(inS>inE || poS>poE) {
+			return;
+		}
+		
+		System.out.print(postorder[poE]+" ");
+		
+		int middle=arr[postorder[poE]];
+		int left=middle-inS;
+		getPreorder(inS, middle-1, poS, poS+left-1);
+		getPreorder(middle+1, inE, poS+left, poE-1);	
 		
 	}
 	
