@@ -41,7 +41,7 @@ public class BAEK_1520 {
 		if(dp[y][x]!=-1) {
 			return dp[y][x];
 		}
-		
+		 
 		dp[y][x]=0;
 		
 		int[] dx= {1,0,-1,0};
