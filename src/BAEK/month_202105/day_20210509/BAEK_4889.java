@@ -17,54 +17,22 @@ public class BAEK_4889 {
 					break L;
 			}
 			Stack<Character> stack = new Stack<>();
+			int cnt=0;
 			for (int i = 0; i < ch.length; i++) {
-				if (stack.isEmpty()) {
+				if (stack.isEmpty() && ch[i]=='}') {
+					cnt++;//바꿨으니까 카운트
+					ch[i]='{';
 					stack.push(ch[i]);
-				} else {
-					char tmp = stack.peek();
-					if (ch[i] == '}' && tmp == '{') {
-						stack.pop();
-					} else {
-						stack.push(ch[i]);
-					}
+				}else if(!stack.isEmpty() && stack.peek()=='{' && ch[i]=='}') {
+					stack.pop();
+				}else {
+					stack.push(ch[i]);
 				}
 			}
-			int[] check = new int[2];
-			while (!stack.isEmpty()) {
-				char tmp = stack.pop();
-				if (tmp == '{')
-					check[0]++;
-				else
-					check[1]++;
-			}
-
-			int ans = 0;
-			if (check[0] > 0 && check[1] == 0) {
-				ans = check[0] / 2;
-			} else if (check[0] == 0 && check[1] > 0) {
-				ans = check[1] / 2;
-			} else {
-				if (check[0] % 2 == 0 && check[1] % 2 == 0) {
-					ans += check[0] / 2;
-					ans += check[1] / 2;
-				}
-				else {
-					int min = Math.min(check[0], check[1]);
-					int max = Math.max(check[0], check[1]);
-					if(min==max && min>1) {
-						ans+=(max-1)*2;
-						System.out.println(t + "." + " " + ans);
-						continue;
-					}
-					ans += min * 2;
-					ans += (max - min) / 2;
-				}
-			}
-
-			System.out.println(t + "." + " " + ans);
-			t++;
+			
+			cnt=cnt+stack.size()/2;//남은거는 '{'이것만 있고 이 수를 반으로 나눈게 바꾸는 횟수
+			System.out.println(t+"."+" "+cnt);
 		}
-
 	}
 
 }
