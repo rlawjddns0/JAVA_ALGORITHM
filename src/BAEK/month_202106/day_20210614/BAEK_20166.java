@@ -5,7 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.HashMap;
 import java.util.StringTokenizer;
-
+/*
+ * 신이 좋아하는 문자열을 들어올때마다 구하는것은 비효율적임
+ * 그래서 일단 신이 좋아하는 문자열중 길이가 가장 긴 문자열의 길이를 구하고
+ * 그 길이가 될 때까지 계속 문자열을 구함
+ * 중간에 신이 좋아하는 문자열이 완성되면 맵에 카운트 +1
+ * 그리고 마지막에 출력만 해주면 된다
+ * 
+ */
 public class BAEK_20166 {
 	static int N,M;
 	static char[][] map;
@@ -45,7 +52,7 @@ public class BAEK_20166 {
 			}
 		}
 		StringBuilder sb = new StringBuilder();
-		
+//		System.out.println(result.toString());
 		for(String key: stringArray) {
 			sb.append(result.get(key)).append("\n");
 		}
