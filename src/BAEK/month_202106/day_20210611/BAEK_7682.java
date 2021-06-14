@@ -26,6 +26,9 @@ public class BAEK_7682 {
 			
 			if((x+o)==9) {//두 개의 합이 9개면(맵이 다 꽉 차있다면
 				if(x!=5)System.out.println("invalid");
+				
+				
+				
 				continue;
 			}
 			else {
