@@ -23,36 +23,25 @@ public class BAEK_7682 {
 				if(input[i]=='O')o++;
 				if(input[i]=='.')dot++;
 			}
-			
-			if((x+o)==9) {//두 개의 합이 9개면(맵이 다 꽉 차있다면
-				if(x!=5)System.out.println("invalid");
-				
-				
-				
-				continue;
+			int k=0;
+			for(int i=0; i<3; i++) {
+				for(int j=0; j<3; j++) {
+					map[i][j]=input[k++];
+				}
 			}
-			else {
+
+			if((x+o)==9) {
 				
 				
 				
 				
 				
+				
+				
+				
+			}else {
 				
 			}
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
 			
 			
 			
