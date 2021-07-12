@@ -65,25 +65,32 @@ public class BAEK_1707 {
 		color[1]=1;//»¡°­
 		visit[1]=true;
 		int before=1;
-		while(!q.isEmpty()) {
+		int cnt=0;
+		while(!q.isEmpty() &&cnt<V) {
 			
 			int tmp=q.poll();
-			int tmp_color=before==1?-1:1;
+			int tmp_color=-color[tmp];
 			
 			for(int i=0; i<g[tmp].size(); i++) {
 				if(visit[g[tmp].get(i)]) {
-					if(before==tmp_color) {
+					if(color[tmp]==tmp_color) {
 						return false;
+					}else {
+						q.offer(g[tmp].get(i));
+						
+						
 					}
 				}else {
+					q.offer(g[tmp].get(i));
 					visit[g[tmp].get(i)]=true;
 					color[g[tmp].get(i)]=tmp_color;
-					before=tmp_color;
 				}
-			}
-			
+			}System.out.println(Arrays.toString(color));
+			System.out.println(q.toString());
+			cnt++;
 			
 		}
+		
 		return true;
 		
 		
