@@ -79,6 +79,7 @@ public class BAEK_1707 {
 						q.offer(g[tmp].get(i));
 						
 						
+						
 					}
 				}else {
 					q.offer(g[tmp].get(i));
