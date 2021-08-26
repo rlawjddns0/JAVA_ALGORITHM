@@ -63,7 +63,7 @@ public class BAEK_22939 {
 	static ArrayList<String> result=new  ArrayList<>();
 	private static void permutation(int[] sel, boolean[] visit, int k, pos[] pos, String ss) {
 		if(k==3) {
-			
+			//처음에 맨해튼 거리를 안쓰고 실제 두 좌표간의 거리를 구해버려서 틀림;;;;;
 			int dist=Math.abs(start.y-pos[sel[0]].y)+Math.abs(start.x-pos[sel[0]].x)+//집에서 첫번째 좌표
 					Math.abs(pos[sel[0]].y-pos[sel[1]].y)+Math.abs(pos[sel[0]].x-pos[sel[1]].x)+//첫->두
 					Math.abs(pos[sel[1]].y-pos[sel[2]].y)+Math.abs(pos[sel[1]].x-pos[sel[2]].x)+//두->세
