@@ -42,8 +42,8 @@ public class BAEK_18223 {
 		
 		pq.add(new edge(1,0));
 		
-		dijkstra();
-		
+		int len1=dijkstra(1,P)+dijkstra(P,V);
+		System.out.println(len1);
 		
 		
 		
@@ -52,7 +52,7 @@ public class BAEK_18223 {
 		
 		
 	}
-	public static void dijkstra() {
+	public static int dijkstra(int start, int end) {
 		int distance[]=new int[V+1];//최단거리 저장
 		boolean visit[]=new boolean[V+1];
 		
@@ -60,26 +60,25 @@ public class BAEK_18223 {
 			distance[i]=Integer.MAX_VALUE;
 		}
 		
-		distance[1]=0;//초기화
-		visit[1]=true;
+		distance[start]=0;//초기화
+		visit[start]=true;
 		
 		while(!pq.isEmpty()) {
 			
-			int min=Integer.MAX_VALUE;
-			int min_index=-1;
+			edge cur=pq.poll();
+			int curNode=cur.V;
+			if(visit[curNode])continue;
+			visit[curNode]=true;
+			if(curNode==end) {
+				return distance[end];
+			}
 			
-			
-			
-			edge e=pq.poll();
-			min=e.W;
-			min_index=e.V;
-			
-			for(int i=0; i<node[min_index].size(); i++) {
-				if(!visit[node[min_index].get(i).V]) {
-					if(distance[min_index]+node[min_index].get(i).W<distance[i]) {
-						distance[i]=distance[min_index]+node[min_index].get(i).W;
-						pq.add(new edge(i,distance[i]));
-					}
+			for(int i=0; i<node[cur.V].size(); i++) {
+				int nextW=node[cur.V].get(i).W;
+				int nextNode=node[cur.V].get(i).V;
+				if(!visit[nextNode] && distance[nextNode]>distance[curNode]+nextW) {
+					distance[nextNode]=distance[curNode]+nextW;
+					pq.add(new edge(nextNode,nextW));
 				}
 			}
 			
@@ -87,7 +86,7 @@ public class BAEK_18223 {
 			
 			
 		}
-		System.out.println(Arrays.toString(distance));
+		return distance[end];
 		
 	}
 }
